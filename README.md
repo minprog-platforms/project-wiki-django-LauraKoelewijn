@@ -6,7 +6,7 @@ Users can view and add encyclopedia entries.
 
 ## Getting Started
 
-Steps to install requirements and get the application running:
+Steps I took to install requirements and get the application running:
 - Install django
 - Install markdown2
 - Create a github account
