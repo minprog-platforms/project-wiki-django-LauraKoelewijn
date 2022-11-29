@@ -18,5 +18,5 @@ def error(request):
 def entry(request, entry):
     """Returns a render of the entry page"""
     return render(request, "encyclopedia/entry.html", {
-        "entries": util.list_entries()
+        "entry": entry.capitalize()
     })
