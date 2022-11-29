@@ -12,7 +12,7 @@ def index(request):
 def error(request):
     """Returns a render of the error page."""
     return render(request, "encyclopedia/error.html", {
-        "page": util.get_entry()
+        "page": util.list_entries()
     })
 
 def entry(request, entry):
@@ -25,4 +25,11 @@ def new_page(request):
     """Returns a render of a page where the user
     can create their own new page."""
     return render(request, "encyclopedia/newpage.html", {
-        "page": util.get_entry()
+        "page": util.list_entries()
+    })
+
+def random_page(request):
+    """Returns a render of a random page."""
+    return render(request, "encyclopedia/randompage.html", {
+        "page": util.list_entries()
+    })
