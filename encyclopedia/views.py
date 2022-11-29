@@ -8,3 +8,7 @@ def index(request):
         "entries": util.list_entries()
     })
 
+def error(request):
+    return render(request, "encyclopedia/error.html", {
+        "entries": util.list_entries()
+    })
