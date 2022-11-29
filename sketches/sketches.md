@@ -1,1 +1,1 @@
-![NotFound error page sketch](notfound.jpg)
+![NotFound error page sketch](/notfound.jpg)
