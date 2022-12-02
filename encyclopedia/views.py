@@ -8,7 +8,6 @@ def convert_markdown(entry):
     if the page is not empty"""
     text = util.get_entry(entry)
     while text is not None:
-        return True
         return markdown.markdown(text)
 
     return False
@@ -28,9 +27,9 @@ def error(request):
 def entry(request, entry):
     """Returns a render of the entry page if the page is not empty. """
     existing_page = convert_markdown(entry)
-    if existing_page == True:
+    if existing_page is not False:
         return render(request, "encyclopedia/entry.html", {
-            "title": entry.capitalize(),
+            "title": entry,
             "content": existing_page
             })
     else:
