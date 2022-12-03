@@ -7,4 +7,8 @@
 {% block body %}
     <h1>Random page</h1>
 
+    <h1>{{ title | safe }}</h1>
+    <h1>{{ content | safe }}</h1>
+
+
 {% endblock %}

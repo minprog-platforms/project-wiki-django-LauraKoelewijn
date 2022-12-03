@@ -7,4 +7,22 @@
 {% block body %}
     <h1>Create a new page</h1>
 
+    <br>
+
+    <p><label>Enter your new encyclopedia entry here:</label></p>
+
+    <form method="POST" action="{% url 'newpage' %}">
+
+        {% csrf_token %}
+
+        <label for="new_title">Title:</label><br>
+        <input name="new_title" placeholder="Title..." type="text">
+        <br>
+        <label for="new_content">Content:</label><br>
+        <textarea name="new_content" style="width:1000px; height:370px;" placeholder="Text..." type="text"></textarea>
+        <br>
+        <input type="submit" value="Save">
+    </form>
+
+
 {% endblock %}

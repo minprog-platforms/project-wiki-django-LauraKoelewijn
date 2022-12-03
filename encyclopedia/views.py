@@ -16,10 +16,14 @@ def index(request):
         "entries": util.list_entries()
     })
 
-def error(request):
-    """Returns a render of the error page."""
-    return render(request, "encyclopedia/error.html", {
-        "error": util.list_entries()
+def notfound(request):
+    """Returns a render of the 404error page."""
+    return render(request, "encyclopedia/404error.html", {
+    })
+
+def notallowed(request):
+    """Returns a render of the 409error page."""
+    return render(request, "encyclopedia/409error.html", {
     })
 
 def entry(request, title):
@@ -31,14 +35,7 @@ def entry(request, title):
             "content": existing_page
             })
     else:
-        return render(request, "encyclopedia/error.html")
-
-def new_page(request):
-    """Returns a render of a page where the user
-    can create their own new page."""
-    return render(request, "encyclopedia/newpage.html", {
-        "page": util.list_entries()
-    })
+        return render(request, "encyclopedia/404error.html")
 
 def random_page(request):
     """Returns a render of a random page."""
@@ -71,4 +68,26 @@ def search(request):
                 "len_query": len_query,
                 "len_list": len_list,
                 "list_entries": list_entries
+            })
+
+def new_page(request):
+    """Returns a render of a page where the user
+    can create their own new page."""
+    """Saves entered data in form at newpage.html"""
+    if request.method == "GET":
+        return render(request, "encyclopedia/newpage.html", {
+            "page": util.list_entries()
+        })
+    else:
+        title = request.POST['new_title']
+        content = request.POST['new_content']
+        title = convert_markdown(title)
+        if title is not None:
+            return render(request, "encyclopedia/409error.html")
+        else:
+            util.save_entry(title, content)
+            newpage_content = convert_markdown(title)
+            return render(request, "encyclopedia/entry.html", {
+                "title": title,
+                "content": newpage_content
             })
