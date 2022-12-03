@@ -1,10 +1,12 @@
 {% extends "encyclopedia/layout.html" %}
 
 {% block title %}
-    <h1>{{ title | safe }}</h1>
+    {{ title | safe }}
 {% endblock %}
 
 {% block body %}
     <p>{{ content | safe }}</p>
+
+    <input class="btn btn-secondary" type="submit" value="Edit"></input>
 
 {% endblock %}
