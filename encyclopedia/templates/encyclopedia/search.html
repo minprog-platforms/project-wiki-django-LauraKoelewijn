@@ -5,14 +5,16 @@
 {% endblock %}
 
 {% block body %}
-    <h1>All Pages</h1>
+    <h1>Lengte query: {{ len_query }}</h1>
+    <h2>Lengte lijst alle entries: {{ len_list }}</h2>
+    <h3>Uitkomst: {{ waarde }}</h3>
 
-    <ul>
+    <!-- <ul>
         {% for entry in entries %}
             <li>
                 <a href="{% url 'entry' title=entry %}">{{ entry }}</a>
             </li>
         {% endfor %}
-    </ul>
+    </ul> -->
 
 {% endblock %}
