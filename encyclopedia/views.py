@@ -61,55 +61,14 @@ def search(request):
             len_query = len(searched_entry)
             all_entries = util.list_entries()
             len_list = len(all_entries)
-            list = []
+            list_entries = []
 
             for i in range(len_list):
                 if all_entries[i][ 0 : len_query ].lower() == searched_entry.lower():
-                    list.append(all_entries[i])
+                    list_entries.append(all_entries[i])
 
             return render(request, "encyclopedia/search.html", {
                 "len_query": len_query,
                 "len_list": len_list,
-                "waarde": list
+                "list_entries": list_entries
             })
-
-
-
-
-
-
-
-
-
-
-
-
-            # return render(request, "encyclopedia/error.html")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            # entries = util.list_entries
-            # list_searched_entries = []
-            # for q in entries:
-            #     if q in entry:
-            #         list_searched_entries.append(entry)
-            # return render(request, "encyclopedia/search.html", {
-            #     "list_searched_entries": list_searched_entries
-            # })
