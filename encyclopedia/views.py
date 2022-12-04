@@ -48,6 +48,7 @@ def search(request):
     searched_entry = request.POST['q']
 
     if request.method == "POST":
+        # voeg nog if toe als lengte entry 0 is
         results = convert_markdown(searched_entry)
         if results is not None:
             return render(request, "encyclopedia/entry.html", {
@@ -65,24 +66,19 @@ def search(request):
                     list_entries.append(all_entries[i])
 
             return render(request, "encyclopedia/search.html", {
-                "len_query": len_query,
-                "len_list": len_list,
                 "list_entries": list_entries
             })
 
 def new_page(request):
     """Returns a render of a page where the user
-    can create their own new page."""
-    """Saves entered data in form at newpage.html"""
+    can create their own new page. Saves entered data in form at newpage.html"""
     if request.method == "GET":
-        return render(request, "encyclopedia/newpage.html", {
-            "page": util.list_entries()
-        })
+        return render(request, "encyclopedia/newpage.html")
     else:
         title = request.POST['new_title']
         content = request.POST['new_content']
-        title = convert_markdown(title)
-        if title is not None:
+        title_in_index = util.get_entry(title)
+        if title_in_index is not None:
             return render(request, "encyclopedia/409error.html")
         else:
             util.save_entry(title, content)
