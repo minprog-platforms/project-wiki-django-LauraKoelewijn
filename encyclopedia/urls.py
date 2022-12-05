@@ -10,5 +10,6 @@ urlpatterns = [
     path("newpage/", views.new_page, name="newpage"),
     path("randompage/", views.random_page, name="randompage"),
     path("search/", views.search, name="search"),
-    path("edit/", views.edit, name="edit")
+    path("edit/", views.edit, name="edit"),
+    path("update/", views.update_page, name="update")
 ]

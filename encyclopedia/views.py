@@ -39,8 +39,7 @@ def entry(request, title):
 
 def random_page(request):
     """Returns a render of a random page."""
-    return render(request, "encyclopedia/randompage.html", {
-        "page": util.list_entries()
+    return render(request, "encyclopedia/entry.html", {
     })
 
 def search(request):
@@ -91,4 +90,21 @@ def new_page(request):
 def edit(request):
     """Returns a render of a page where the user
     can edit a current encyclopedia entry and save it."""
-    return render(request, "encyclopedia/edit.html")
+    if request.method == 'POST':
+        title = request.POST['entry_title']
+        content = util.get_entry(title)
+        return render(request, "encyclopedia/edit.html", {
+            "title": title,
+            "content": content
+        })
+
+def update_page(request):
+    if request.method == 'POST':
+        title = request.POST['title']
+        content = request.POST['content']
+        util.save_entry(title, content)
+        markdown = convert_markdown(title)
+        return render(request, "encyclopedia/entry.html", {
+            "title": title,
+            "content": markdown
+        })

@@ -11,21 +11,17 @@
 
     <p><label>Edit current encyclopedia entry here:</label></p>
 
-    <form action="{% url 'newpage' %}" method="POST">
+    <form action="{% url 'update' %}" method="POST">
 
         {% csrf_token %}
 
-        <label for="new_title">Title:</label><br>
-        <input name="new_title" type="text">hoi<
+        <label for="title">Title:</label><br>
+        <input name="title" type="text" value="{{ title }}">
         <br>
 
-        {% csrf_token %}
-
-        <label for="new_content">Content:</label><br>
-        <textarea name="new_content" style="width:1000px; height:370px;" type="text"></textarea>
+        <label for="content">Content:</label><br>
+        <textarea name="content" style="width:1000px; height:370px;" type="text">{{ content }}</textarea>
         <br>
-
-        {% csrf_token %}
 
         <input type="submit" value="Save">
     </form>
