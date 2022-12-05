@@ -105,6 +105,8 @@ def edit(request):
         })
 
 def update_page(request):
+    """Saves the changes made by the user and
+    returns a render of the updated entry page."""
     if request.method == 'POST':
         title = request.POST['title']
         content = request.POST['content']
