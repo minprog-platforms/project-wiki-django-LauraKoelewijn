@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 from . import util
-import markdown
+import markdown, random
 
 def convert_markdown(title):
     """Converts text from markdown to html and returns it
@@ -39,7 +39,13 @@ def entry(request, title):
 
 def random_page(request):
     """Returns a render of a random page."""
+    entry_list = util.list_entries()
+    title = random.choice(entry_list)
+    content = convert_markdown(title)
+
     return render(request, "encyclopedia/entry.html", {
+        "title": title,
+        "content": content
     })
 
 def search(request):
