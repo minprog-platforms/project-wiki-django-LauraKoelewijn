@@ -87,3 +87,8 @@ def new_page(request):
                 "title": title,
                 "content": newpage_content
             })
+
+def edit(request):
+    """Returns a render of a page where the user
+    can edit a current encyclopedia entry and save it."""
+    return render(request, "encyclopedia/edit.html")
