@@ -14,3 +14,7 @@ Steps I took to install requirements and get the application running:
 - Clone repository onto own computer
 - Add code to the source code
 - When changes are made: commit and push
+
+## Screencast
+
+https://video.uva.nl/media/Screencast+Wiki+MinProg+-+Laura+Koelewijn/0_vgfk7cho
